@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body class="bg">
+    <div class="navbar center">Smart House Monitoring</div>
+    <div class="main-content">
+      <div class="left-pane">
+        <h3>Sensor Data</h3>
+        {{ table | safe }}
+      </div>
+      <div class="right-pane">
+        <h3>Graph</h3>
+        <img
+          src="{{ url_for('static', filename=graph_img) }}"
+          alt="Sensor Graph"
+        />
+      </div>
+    </div>
+  </body>
+</html>

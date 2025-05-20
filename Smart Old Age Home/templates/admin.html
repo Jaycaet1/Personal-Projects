@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body class="bg">
+    <div class="navbar">
+      Smart House Admin Panel |
+      <a href="{{ url_for('logout') }}" style="color: #fff; float: right"
+        >Logout</a
+      >
+    </div>
+
+    <div class="main-content">
+      <div class="left-pane">
+        <h2>LDR 1</h2>
+        <div class="table-container">{{ render_table(ldr1_data) | safe }}</div>
+        <img
+          src="{{ url_for('static', filename='ldr1_graph.png') }}"
+          width="100%"
+          alt="LDR1 Graph"
+        />
+
+        <h2>LDR 2</h2>
+        <div class="table-container">{{ render_table(ldr2_data) | safe }}</div>
+        <img
+          src="{{ url_for('static', filename='ldr2_graph.png') }}"
+          width="100%"
+          alt="LDR2 Graph"
+        />
+      </div>
+
+      <div class="right-pane">
+        <h2>PIR Sensor</h2>
+        <div class="table-container">{{ render_table(pir_data) | safe }}</div>
+        <img
+          src="{{ url_for('static', filename='pir_graph.png') }}"
+          width="100%"
+          alt="PIR Graph"
+        />
+
+        <h2>Temperature</h2>
+        <div class="table-container">{{ render_table(temp_data) | safe }}</div>
+        <img
+          src="{{ url_for('static', filename='temperature_graph.png') }}"
+          width="100%"
+          alt="Temperature Graph"
+        />
+
+        <h2>Humidity</h2>
+        <div class="table-container">
+          {{ render_table(humidity_data) | safe }}
+        </div>
+        <img
+          src="{{ url_for('static', filename='humidity_graph.png') }}"
+          width="100%"
+          alt="Humidity Graph"
+        />
+      </div>
+    </div>
+  </body>
+</html>
