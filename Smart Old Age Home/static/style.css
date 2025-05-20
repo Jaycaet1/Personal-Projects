@@ -1,0 +1,221 @@
+body.bg {
+  background: url("AS_SmartHomesBlog_012618_V2_800x300.png") no-repeat center
+    center fixed;
+  background-size: cover;
+  font-family: "Segoe UI", sans-serif;
+  color: #fff;
+}
+
+.container {
+  max-width: 400px;
+  margin: 10% auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #3498db;
+  border: none;
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.form-box input, select {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+select{
+  width: 95%;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left-pane,
+.right-pane {
+  width: 48%;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.table-container {
+  max-height: 300px; /* Fixed height */
+  overflow-y: auto; /* Scroll vertically */
+  overflow-x: auto; /* Scroll horizontally if needed */
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  color: black;
+}
+
+table th,
+table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table thead {
+  background-color: #3498db;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .navbar .title {
+      flex: 1;
+    }
+
+    .logout {
+      color: white;
+      text-decoration: none;
+      margin-left: auto;
+    }
+
+    .nav-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background-color: #222;
+      padding: 10px 0;
+    }
+
+    .nav-buttons button {
+      flex: 1 1 120px;
+      max-width: 150px;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    .sensor-section {
+      display: none;
+      margin: 20px auto;
+      max-width: 90%;
+    }
+
+    .sensor-section.active {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .center-content {
+      padding: 20px;
+    }
+
+
+
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.graphs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.graph-container {
+    margin: 10px;
+}
