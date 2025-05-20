@@ -1,7 +1,9 @@
 Description
+
 This project used 3 LDR sensors, a Humidity Sensor, a Temperature sensor, an Infrared sensor, and an ESP32 microcontroller to create a prototype of a Smart Old Age Home. The sensors send their readings to the microcontroller, which processes them and sends them to the Database and the web page.
 
 Usage
+
 Before using the files, first run the following commands on the terminal within the Smart Old Age Home repository
 1. pip install virtualenv #to create a virtual environment to run the project.
 2. virtualenv env #to log into your virtual environment.
