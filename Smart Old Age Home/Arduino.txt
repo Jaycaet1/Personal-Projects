@@ -1,0 +1,91 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+const char* ssid = "group115";
+const char* password = "group115";
+const char* serverURL = "http://192.168.59.164:5000/data";
+
+const int pirPin = 13;
+const int ldr1Pin = 34;
+const int ldr2Pin = 35;
+const int tempPin = 4;
+const int soilPin = 32;
+
+const int ledLight = 15;
+const int alarmTemp = 2;
+const int alarmSoil = 0;
+
+const int lightThreshold = 300;
+const float tempLow = 18.0;
+const float tempHigh = 30.0;
+const int soilLow = 400;
+const int soilHigh = 800;
+
+OneWire oneWire(tempPin);
+DallasTemperature sensors(&oneWire);
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(pirPin, INPUT);
+  pinMode(ldr1Pin, INPUT);
+  pinMode(ldr2Pin, INPUT);
+  pinMode(soilPin, INPUT);
+  pinMode(ledLight, OUTPUT);
+  pinMode(alarmTemp, OUTPUT);
+  pinMode(alarmSoil, OUTPUT);
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+  }
+  sensors.begin();
+}
+
+void loop() {
+  int pirState = digitalRead(pirPin);
+  int ldr1 = analogRead(ldr1Pin);
+  int ldr2 = analogRead(ldr2Pin);
+  int soil = analogRead(soilPin);
+  sensors.requestTemperatures();
+  float temperature = sensors.getTempCByIndex(0);
+
+  if (pirState == HIGH || ldr1 < lightThreshold) {
+    digitalWrite(ledLight, HIGH);
+  } else {
+    digitalWrite(ledLight, LOW);
+  }
+
+  if (temperature < tempLow || temperature > tempHigh) {
+    digitalWrite(alarmTemp, HIGH);
+  } else {
+    digitalWrite(alarmTemp, LOW);
+  }
+
+  if (soil < soilLow || soil > soilHigh) {
+    digitalWrite(alarmSoil, HIGH);
+  } else {
+    digitalWrite(alarmSoil, LOW);
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(serverURL);
+    http.addHeader("Content-Type", "application/json");
+    String postData = "{";
+    postData += "\"pir\":" + String(pirState) + ",";
+    postData += "\"ldr1\":" + String(ldr1) + ",";
+    postData += "\"ldr2\":" + String(ldr2) + ",";
+    postData += "\"temperature\":" + String(temperature) + ",";
+    postData += "\"soil_moisture\":" + String(soil);
+    postData += "}";
+    http.POST(postData);
+    int httpResponseCode = http.POST(postData);
+    Serial.println("Payload: " + postData);
+    Serial.println("Response Code: " + String(httpResponseCode));
+    http.end();
+  }
+  
+
+  delay(5000);
+}
